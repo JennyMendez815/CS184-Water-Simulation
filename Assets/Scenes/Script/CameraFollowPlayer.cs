@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CameraFollowPlayer : MonoBehaviour
 {
-    public Transform orientation;
+
 
     private float xRotation = 0;
     private float yRotation = 0;
@@ -21,6 +21,6 @@ public class CameraFollowPlayer : MonoBehaviour
         //xRotation = Mathf.Clamp(xRotation, -90f, 90f);
 
         transform.rotation = Quaternion.Euler(-yRotation, xRotation, 0);
-        orientation.rotation = Quaternion.Euler(0, yRotation, 0);
+        
     }
 }

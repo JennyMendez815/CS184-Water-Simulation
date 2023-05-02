@@ -10,6 +10,8 @@ public class Movement : MonoBehaviour
 
     public float groundDrag;
 
+    
+
     [HideInInspector] public float walkSpeed;
     [HideInInspector] public float sprintSpeed;
 
@@ -21,20 +23,14 @@ public class Movement : MonoBehaviour
 
     Vector3 moveDirection;
 
-    //Rigidbody rb;
+    public Rigidbody rb;
 
     private void Start()
     {
-        //rb = GetComponent<Rigidbody>();
-        //rb.freezeRotation = true;
+        rb.freezeRotation = true;
     }
 
     private void Update()
-    {
-        //rb.drag = groundDrag;
-    }
-
-    private void FixedUpdate()
     {
         MovePlayer();
     }
@@ -47,23 +43,22 @@ public class Movement : MonoBehaviour
 
     private void MovePlayer()
     {
-        // calculate movement direction
-        moveDirection = orientation.forward * verticalInput + orientation.right * horizontalInput;
-
-        //rb.AddForce(moveDirection.normalized * moveSpeed * 10f, ForceMode.Force);
-
+        if (Input.GetKey(KeyCode.W))
+        {
+            transform.Translate(Vector3.forward * Time.deltaTime * 10);
+        }
+        if (Input.GetKey(KeyCode.S))
+        { 
+            transform.Translate(-1 * Vector3.forward * Time.deltaTime * 10);
+        }
+        if (Input.GetKey(KeyCode.A)) { 
+            transform.Translate(Vector3.left * Time.deltaTime * 10);
+        }
+        if (Input.GetKey(KeyCode.D))
+        {
+            transform.Translate(Vector3.right * Time.deltaTime * 10);
+        }
     }
 
-    private void SpeedControl()
-    {
-        //Vector3 flatVel = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
-
-        // limit velocity if needed
-        //if(flatVel.magnitude > moveSpeed)
-        //{
-            //Vector3 limitedVel = flatVel.normalized * moveSpeed;
-            //rb.velocity = new Vector3(limitedVel.x, rb.velocity.y, limitedVel.z);
-        //}
-    }
 
 }
