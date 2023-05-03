@@ -27,6 +27,7 @@ public class Movement : MonoBehaviour
 
     private void Start()
     {
+        transform.rotation = Quaternion.LookRotation(Vector3.zero);
         rb.freezeRotation = true;
     }
 

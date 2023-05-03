@@ -9,6 +9,9 @@ public class CameraFollowPlayer : MonoBehaviour
     private float xRotation = 0;
     private float yRotation = 0;
 
+    void Start() {
+        transform.rotation = Quaternion.LookRotation(Vector3.zero);
+    }
 
     void Update() {
         Cursor.lockState = CursorLockMode.Locked;
